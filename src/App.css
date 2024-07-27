@@ -1,38 +1,228 @@
+/* Global Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto; /* Allow scrolling */
+}
+
+.background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  backdrop-filter: blur(5px); /* Apply blur to background */
+  z-index: 999; /* Ensure it appears below the popup */
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+  backdrop-filter: blur(5px); /* Blur background */
+}
+
+.popup-content {
+  background: #ffffff;
+  color: #000000;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-close-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.popup-close-button:hover {
+  background-color: #cc0000;
+}
+
+
+/* Main App Styles */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #ffffff; /* Text color for better contrast on black background */
+  background-color: #000000; /* Set the full background to black */
+  padding: 20px;
+  min-height: 100vh; /* Ensure the container takes up full viewport height */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center content horizontally */
+}
+
+/* Loader Container */
+.loader-container {
+  position: fixed; /* Ensures it covers the whole screen */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with some opacity */
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
 }
 
-.App-link {
-  color: #61dafb;
+/* Other Styles remain the same */
+
+
+/* Heading */
+h1 {
+  color: #ffffff; /* Ensure heading color is visible on black background */
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Input */
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #bcefff;
+  border-radius: 5px;
+  color: #000;
+  background: #ffffff;
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #181818;
+  border: 2px solid #00fffc;
+  border-radius: 5px;
+  background: #00fffc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+button:disabled {
+  background: #67f97d;
+  border-color: #5df4b0;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background: transparent;
+  color: #00fffc;
+  border-color: #00fffc;
+  box-shadow: 0 0 10px #00fffc;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff4d4d;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+/* Video Details */
+.video-details {
+  margin-top: 20px;
+}
+
+.video-details h2 {
+  margin-bottom: 10px;
+}
+
+.video-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.video-details a {
+  color: #00fffc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.video-details a:hover {
+  text-decoration: underline;
+}
+
+.video-links {
+  margin-top: 20px;
+}
+
+.link-item {
+  margin-bottom: 10px;
+}
+
+.link-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.link-item a {
+  color: #00fffc;
+  text-decoration: none;
+}
+
+.link-item a:hover {
+  text-decoration: underline;
+}
+
+/* Platform Selection Icons */
+.platform-selection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.platform-selection div {
+  cursor: pointer;
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+.platform-selection div:hover {
+  transform: scale(1.2);
+}
+
+.platform-selection .MuiSvgIcon-root {
+  font-size: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  input[type="text"] {
+    width: 80%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .platform-selection {
+    flex-direction: column;
+  }
+  .platform-selection div {
+    margin: 10px 0;
+  }
+
+  .video-details img {
+    width: 80%;
   }
 }
